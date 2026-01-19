@@ -1,0 +1,159 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+/* Variabel Global */
+:root {
+    --bg-dark: #080808;
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --accent-white: rgba(255, 255, 255, 0.08);
+    --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --modal-overlay: rgba(0, 0, 0, 0.95);
+}
+
+/* Dasar Halaman */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    overflow-x: hidden;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animasi Muncul (Fade In) */
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Efek Kartu Glassmorphism */
+.glass-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    border-radius: 2rem;
+}
+
+.glass-card:hover {
+    background: var(--accent-white);
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+}
+
+/* Teks Gradasi */
+.gradient-text {
+    background: linear-gradient(to right, #ffffff, #a1a1a1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Tombol Media Sosial */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-radius: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #111111;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.social-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255,255,255,0.05);
+}
+
+.whatsapp-btn:hover { 
+    background: #25D366; 
+    color: white; 
+    border-color: #25D366; 
+}
+
+.tiktok-btn:hover { 
+    background: white; 
+    color: black; 
+    border-color: white; 
+}
+
+.instagram-btn:hover { 
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+    color: white; 
+    border-color: transparent; 
+}
+
+/* Layout Modal Gambar */
+#imageModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: var(--modal-overlay);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+    overflow-y: auto;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.modal-card {
+    background: #0a0a0a;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 800px;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: auto;
+    position: relative;
+}
+
+/* State Aktif Modal */
+#imageModal.active { 
+    display: flex; 
+}
+
+#imageModal.active .modal-card { 
+    transform: scale(1); 
+    opacity: 1; 
+}
+
+/* Pencegahan Scroll pada Body saat Modal Aktif */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Pengaturan Gambar di dalam Modal */
+#modalImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
